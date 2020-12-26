@@ -1,0 +1,12 @@
+#content{
+    height: 135px;
+}
+#searchBar{
+    padding: 30px;
+}
+.card-body {
+    padding: 2.25rem;
+}
+.searchBtn{
+    width: 115px;
+}

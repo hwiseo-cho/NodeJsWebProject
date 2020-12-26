@@ -1,0 +1,24 @@
+#content{
+    height: 575px;
+    text-align: center;
+}
+#content>div{
+    display: inline-block;
+}
+.form-signin>input, .form-signin>button{
+    width: 270px;
+    margin-bottom: 3px;
+}
+.login-title{
+    padding-left: 107%;
+}
+#loginBox{
+    margin-top: 150px;
+}
+#loginBtn{
+   background-color: #343A40; 
+   border-color: #343A40;
+}
+.new-account{
+    color: #343A40;
+}
