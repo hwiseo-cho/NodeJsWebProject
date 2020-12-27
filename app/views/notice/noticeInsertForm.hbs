@@ -1,0 +1,38 @@
+<div style="height: 640px;">
+    <table class="table table-list-search">
+        <thead>
+            <tr>
+                <th>공지 글쓰기</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="/notice/insertNotice" method="POST">
+            <tr>
+                <td>제목</td>
+                <td><input type="text" name="title" style="width: 543px;"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="content" id="" cols="70" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td>작성일</td>
+                <td><input type="date" name="createdate" style="width: 247px;"></td>
+            </tr>
+            <tr></tr>
+        </tbody>
+    </table>   
+    <div class="rows" id="b" style="text-align: center;">
+        <button class="btn btn-secondary" id="insertBtn" type="submit">작성</button>
+        <button class="btn btn-secondary" id="cancelBtn" type="button">취소</button>
+    </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $("#cancelBtn").on("click",function(){
+            location.href = "/notice";
+        });
+    })
+</script>

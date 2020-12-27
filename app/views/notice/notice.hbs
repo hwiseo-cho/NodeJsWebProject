@@ -1,0 +1,60 @@
+<div class="">
+    <div class="rows">
+        <button class="btn btn-secondary" id="wBtn" type="button">글쓰기</button>
+        <button class="btn btn-secondary" id="dBtn" type="button">삭제</button>
+    </div>
+    <table class="table table-list-search">
+        <thead>
+            <tr>
+                <th>체크</th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rows}}
+            <tr>
+                <td><input type="radio" name="checkNotice" value="{{NNO}}"></td>
+                <td>{{ROWNUM}}</td>
+                <td class="title" style="cursor: pointer;">{{TITLE}}</td>
+                <td class="nDate">{{CREATEDATE}}</td>
+                <td>{{AUTHOR}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>   
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('#wBtn').on("click", function(){
+            location.href = '/notice/goInsertNotice';
+        });
+
+        $('#dBtn').on("click", function(){
+            var nno = $("input[name=checkNotice]:checked").val();
+            console.log(nno);
+            $.ajax({
+                url:'/notice/deleteNotice',
+                type:'post',
+                data:{nno:nno},
+                success:function(data){
+                    if(data === 1) {
+                        alert('삭제하였습니다.');
+                        location.reload();
+                    }
+                }, error:function(){
+                    console.log('에러');
+                }
+            });
+        });
+
+        $(".title").on("click", function(){
+            var title = $(this).text();
+            console.log(title);
+            location.href = '/notice/detail/'+title;
+        });
+    });
+</script>

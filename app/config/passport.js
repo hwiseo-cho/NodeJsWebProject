@@ -22,9 +22,7 @@ module.exports = () => {
     passReqToCallback: false,
   }, (id, password, done) => {
       if(id === user.id) {
-          console.log(1)
           if(password === user.pwd) {
-            console.log(2)
             return done(null, user);
           } else {
             return done(null, false, {message:"Incoreect password"});
