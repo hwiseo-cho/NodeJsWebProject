@@ -7,6 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
+
 var passportConfig = require('./app/config/passport');
 var indexRouter = require('./app/routes/index');
 var usersRouter = require('./app/routes/users');

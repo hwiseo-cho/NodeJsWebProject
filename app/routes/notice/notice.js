@@ -5,18 +5,54 @@ var con = require('../../config/mysql');
 var moment = require('moment');
 var dateFormat = require('dateformat');
 
-// list 불러오기
 router.get('/', (request, response) => {
-    con.query(`SELECT @ROWNUM := @ROWNUM+1 AS ROWNUM,N.*
-                FROM NOTICE N,(SELECT @ROWNUM := 0) NMP
-                ORDER BY ROWNUM DESC`, function(error, result){
+    response.redirect('/notice/1');
+});
+
+// list 불러오기
+router.get('/:page', (request, response) => {
+    var currentPage = request.params.page;
+    con.query(`SELECT COUNT(*) AS COUNT FROM NOTICE`, (error, pageCount) => {
+        con.query(`SELECT @ROWNUM := @ROWNUM+1 AS ROWNUM,N.*
+                    FROM NOTICE N,(SELECT @ROWNUM := 0) NMP
+                    ORDER BY ROWNUM DESC`, function(error, result){
+                        console.log(pageCount[0].COUNT)
             for(var i in result) {
                 var temp = result[i].CREATEDATE.toString();
                 result[i].CREATEDATE = dateFormat(temp,'yyyy-mm-dd');
             }
-        response.render('./notice/notice', {rows:result});
+            var noticeSize = 10;
+            var limit = 5;
+            var pagecount = pageCount;
+
+            if(currentPage <= 0) {
+                pagecount = 0;
+                currentPage = 1;
+            } else {
+                pagecount = (currentPage-1)*noticeSize;
+            }
+            if(totalRowCount < 0) totalRowCount = 0;
+            let totalPage = Math.ceil(totalRowCount/noticeSize);
+            if(totalPage < currentPage) {
+                pagecount = 0;
+                currentPage = 1;
+            }
+            let startPage = ((currentPage -1)*limit)+1;
+            let endPage = (startPage + limit)-1;
+            let pagination = {
+                "currentPage": currentPage,
+                "limit":limit,
+                "noticeSize":noticeSize,
+                "totalPage":totalPage,
+                "startPage":startPage,
+                "endPage":endPage,
+                "pageCount":pagecount
+            }
+            response.render('./notice/notice', {rows:result, pagination:pagination});
+        });
     });
 });
+
 // 등록 페이지로 가기
 router.get('/goInsertNotice', (request, response) => {
     response.render('./notice/noticeInsertForm');
