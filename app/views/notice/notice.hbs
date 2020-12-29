@@ -1,5 +1,5 @@
 <div class="">
-    <div class="rows">
+    <div class="rows" id="toptop">
         <button class="btn btn-secondary" id="wBtn" type="button">글쓰기</button>
         <button class="btn btn-secondary" id="dBtn" type="button">삭제</button>
     </div>
@@ -25,8 +25,7 @@
             {{/each}}
         </tbody>
     </table>   
-</div>
-<!-- Pagination -->
+    <!-- Pagination -->
 <ul class="pagination justify-content-center">
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
@@ -50,13 +49,15 @@
     </a>
     </li>
 </ul> 
+</div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script>
     $(function(){
         $('#wBtn').on("click", function(){
-            location.href = '/notice/goInsertNotice';
+            location.href = '/notice/insertForm';
         });
 
         $('#dBtn').on("click", function(){

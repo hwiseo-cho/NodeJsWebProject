@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>Dolphin</title>
     <!-- Bootstrap core CSS -->
     <link href="./css/common/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -22,6 +22,7 @@
       #b>button{
         float: inherit;
       }
+      #toptop{margin-top: 56px;}
     </style>
   </head>
   <body>
@@ -37,7 +38,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">숙소</a>
+            <a class="nav-link" href="/room">숙소</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="services.html">특가</a>
@@ -52,12 +53,20 @@
               <a class="dropdown-item" href="faq.html">FAQ</a>
             </div>
           </li>
+          {{#if loginUser}}
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{loginUser}}님 환영합니다</a>
+          </li>
+          <li class="nav-item">
+            <button id="logoutBtn" style="color: #FFFFFF80; background-color: #343A40; border: border: 0.5px solid ; margin-top: 7px;">
+            로그아웃
+            </button>
+          </li>
+          {{else}}
           <li class="nav-item">
             <a class="nav-link" href="/login">로그인</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">{{HttpSession}}</a>
-          </li>
+          {{/if}}
         </ul>
       </div>
     </div>
@@ -71,5 +80,12 @@
   </footer>
   <script src="./js/jquery/jquery.min.js"></script>
   <script src="./js/common/bootstrap.bundle.min.js"></script>
+  <script>
+    $(function(){
+      $("#logoutBtn").on("click",function(){
+        location.href = "/login/logout";
+      });
+    });
+  </script>
   </body>
 </html>

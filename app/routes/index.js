@@ -7,7 +7,7 @@ var router = express.Router();
 // });
 
 router.get('/', (request, response) => {
-  response.render('home');
+  response.render('home',{loginUser:request.user});
 }) 
 
 module.exports = router;

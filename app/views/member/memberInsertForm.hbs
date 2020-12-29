@@ -1,0 +1,29 @@
+<div class="container" style="text-align: center;">
+        <div class="py-5 text-center">
+            <h1>Dolphin</h1>
+            <p class="lead">회원가입</p>
+        </div>
+
+        <div class="col-md-4 order-md-1" style="display: inline-block; text-align: left;">
+            <h4 class="mb-3">회원정보</h4>
+            <form class="needs-validation" action="/login/memberInsert" method="POST">
+                <div class="mb-3">
+                    <label for="username">아이디</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="username" placeholder="4자리 이상" required name="id">
+                        <div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password">비밀번호</label> 
+                    <input type="password" class="form-control" id="password" placeholder="4자리 이상" required name="pwd">
+                    <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">가입하기</button>
+                <hr class="mb-4">
+            </form>
+        </div>
+    </div>
