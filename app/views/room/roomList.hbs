@@ -25,79 +25,36 @@
               </div>
             </div>
           </div>
+          <div class="card mb-4">
+            <h5 class="card-header">가격</h5>
+            <div class="card-body">
+              <label for="price"><input type="range" style="width: 230%;"/>0</label>
+            </div>
+          </div>
         </div>
         <!-- Blog Entries Column -->
         <div class="col-md-8">
           <!-- Project One -->
+        {{#each result}}
         <div class="row">
           <div class="col-md-7">
-            <a href="#">
-              <img class="img-fluid rounded mb-3 mb-md-0" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/ee/66/fb/kensington-hotel-yeouido.jpg?w=700&h=300&s=1" alt="">
+            <a href="/room/detail/{{RNO}}">
+              <img class="img-fluid rounded mb-3 mb-md-0" src="{{IMAGE}}" alt="">
             </a>
           </div>
           <div class="col-md-5">
-            <h3>캔싱턴</h3>
-            <p>가격: </p>
-            <p>인원: </p>
-            <p>등등: </p>
-            <a class="btn btn-primary" href="#">예약
+            <h3>{{HNAME}}</h3>
+            <p>가격: {{PRICE}} ￦</p>
+            <p>인원: {{CAPA}} 명</p>
+            <p>소개: {{HCONTENT}}</p>
+            <a class="btn btn-primary" href="/room/detail/{{RNO}}">예약
               <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
           </div>
         </div>
         <!-- /.row -->
         <hr>
-        <!-- Project Two -->
-        <div class="row">
-          <div class="col-md-7">
-            <a href="#">
-              <img class="img-fluid rounded mb-3 mb-md-0" src="https://naksanbeach.co.kr/file/image.do?path=temp_uploads/2017/06/&name=f4OzzFMtYPBhkct.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-5">
-            <h3>Project Two</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-            <a class="btn btn-primary" href="#">View Project
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-        </div>
-        <!-- /.row -->
-        <hr>
-        <!-- Project Three -->
-        <div class="row">
-          <div class="col-md-7">
-            <a href="#">
-              <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-            </a>
-          </div>
-          <div class="col-md-5">
-            <h3>Project Three</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-            <a class="btn btn-primary" href="#">View Project
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-        </div>
-        <!-- /.row -->
-        <hr>
-        <!-- Project Four -->
-        <div class="row">
-          <div class="col-md-7">
-            <a href="#">
-              <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-            </a>
-          </div>
-          <div class="col-md-5">
-            <h3>Project Four</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-            <a class="btn btn-primary" href="#">View Project
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div>
-        </div>
-        <!-- /.row -->
-        <hr>
+        {{/each}}
       </div>
   </div>
 </div>
